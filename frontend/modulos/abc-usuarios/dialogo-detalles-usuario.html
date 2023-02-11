@@ -1,0 +1,95 @@
+<md-dialog ng-cloak>
+	<md-toolbar class="md-toolbar-tools d-flex" style="justify-content: space-between;">
+		<h2>{{ usuario.nuevo ? 'Nuevo':'Editar' }} Usuario</h2>
+	</md-toolbar>
+
+	<md-dialog-content style="width: 620px;">
+		<md-content class="md-padding">
+
+			<div layout="column" ng-cloak class="md-inline-form">
+				<form name="Form" ng-submit="GuardarUsuario()">
+					<h5>Información Básica</h5>
+					<div layout-gt-sm="row">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Nombre</label>
+							<input ng-model="usuario.nombre" name="nombre" required>
+							<div ng-messages="Form.nombre.$error">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Apellido</label>
+							<input ng-model="usuario.apellido" name="apellido" required>
+							<div ng-messages="Form.apellido.$error">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+					</div>
+					
+					<div layout-gt-sm="row">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Usuario</label>
+							<input ng-model="usuario.usuario" name="usuario" required>
+							<div ng-messages="Form.usuario.$error">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Contraseña</label>
+							<input type="password" ng-model="usuario.contrasena" name="contrasena" ng-required="usuario.nuevo">
+							<div ng-messages="Form.contrasena.$error" ng-if="usuario.nuevo">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+					</div>
+					
+					<div layout-gt-sm="row">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Correo</label>
+							<input type="email" ng-model="usuario.correo" name="correo" required>
+							<div ng-messages="Form.correo.$error">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Teléfono</label>
+							<input ng-model="usuario.telefono" name="telefono">
+						</md-input-container>
+					</div>
+
+					<div layout-gt-sm="row">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Rol</label>
+							<md-select ng-model="usuario.rol" name="rol" required>
+								<md-option ng-repeat="rol in selects.roles" value="{{ rol.id }}">{{ rol.name }}</md-option>
+							</md-select>
+							<div ng-messages="Form.rol.$error">
+								<div ng-message="required">Este campo no puede estar vacío</div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Estatus</label>
+							<md-select ng-model="usuario.estatus" name="estatus" required>
+								<md-option value='1'>Activo</md-option>
+								<md-option value='0'>Inactivo</md-option>
+							</md-select>
+							<div ng-messages="Form.estatus.$error">
+								<div ng-message="required">Debe seleccionar una opción</div>
+							</div>
+						</md-input-container>
+					</div>
+				</form>
+			</div>
+			
+		</md-content>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row">
+		<md-button ng-click="respuesta(false)">Cancelar</md-button>
+		<md-button ng-click="GuardarUsuario()" class="text-success">Guardar</md-button>
+	</md-dialog-actions>
+</md-dialog>

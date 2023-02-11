@@ -1,0 +1,122 @@
+<div flex class="col-xl-11 col-lg-12 ng-cloak" style="margin: auto" ng-cloak>
+
+  <md-content>
+    <div layout="row" layout-align="end center">
+      <h2 class="md-title">Gestión de Usuarios</h2>
+      <span flex></span>
+
+      <md-input-container>
+        <label>Filtrar Usuarios</label>
+        <input ng-model="filtro.coincidencia" />
+      </md-input-container>
+
+      <div class="d-flex" style="justify-content: space-between">
+        <md-button
+          class="md-fab bg-primary md-mini"
+          ng-click="aplicarFiltros()"
+          title="Aplicar Filtro"
+          disabled="true"
+        >
+          <md-icon class="material-icons text-white">search</md-icon>
+        </md-button>
+        <md-button
+          class="md-fab bg-success md-mini"
+          ng-click="DetallesUsuario(true)"
+          title="Nuevo Usuario"
+        >
+          <md-icon class="material-icons text-white">add</md-icon>
+        </md-button>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <div layout="row" layout-align="space-between center" class="mt-4" ng-show="paginacion.total > 0">
+      <div>
+        <md-input-container class="m-0 ml-2" layout="row" layout-align="start start">
+          <label class="m-0">Por Página</label>
+          <md-select ng-model="filtro.items">
+            <md-option value="25">25</md-option>
+            <md-option value="50">50</md-option>
+            <md-option value="100">100</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div>
+        <nav layout="row" layout-align="center center">
+          <ul class="pagination">
+              <li class="page-item">
+                <span class="page-link" ng-click="filtro.pagina = 1"><<</span>
+              </li>
+              <li ng-repeat="num in paginacion.rango" class="page-item">
+                <span class="page-link" ng-class="{'bg-primary text-white': ultimoFiltro.pagina == num}" ng-click="filtro.pagina = num">{{ num }}</span>
+              </li>
+              <li class="page-item">
+                <span class="page-link" ng-click="filtro.pagina = paginacion.paginas">>></span>
+              </li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <div class="d-flex mt-2" style="justify-content: flex-end;">
+          <span>
+            <b>{{ paginacion.total }}</b> 
+            {{ paginacion.total === 1 ? 'usuario':'usuarios' }} 
+            en 
+            <b>{{ paginacion.paginas }}</b> {{ paginacion.paginas === 1 ? 'página':'páginas'}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <table class="table" ng-if="usuarios.length > 0">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            ng-repeat="item in usuarios"
+            ng-click="DetallesUsuario(false, item)"
+            title="Click para editar"
+          >
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.apellido }}</td>
+            <td>{{ item.telefono || 'No definido' }}</td>
+            <td>{{ getRol(item.rol) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        ng-if="usuarios.length === 0"
+        layout="row"
+        layout-align="center center"
+        class="m-5"
+      >
+        <h4>No existen usuarios con los criterios de búsqueda</h4>
+      </div>
+    </div>
+  </md-content>
+</div>
+
+<style scoped>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,
+  td {
+    padding: 8px 16px;
+  }
+  th {
+    background: #eee;
+  }
+
+  .md-errors-spacer {
+    min-height: 0 !important;
+  }
+</style>

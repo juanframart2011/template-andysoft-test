@@ -1,0 +1,57 @@
+﻿<article class="loginForm">
+	<div class="cabecera text-center">
+	   <h4>Iniciar Sesión</h4>
+	</div>
+	<div class="cuerpo">
+	   <form ng-submit="vm.login()" role="form">
+			<div class="form-group">
+				<label>Usuario</label>
+				<input class="form-control" name="username" id="username" ng-model="vm.username" autocomplete="off" required>
+			</div>
+			<div class="form-group">
+				<label>Contraseña</label>
+				<input type="password" class="form-control" name="password" id="password" ng-model="vm.password" autocomplete="off" required>
+			</div>
+			<div class="actions">
+				<!-- <button routerLink="/recuperar" class="btn btn-secondary">Olvidé mi contraseña</button> -->
+				<button class="btn btn-success btn-block" type="submit" ng-disabled="form.$invalid || vm.dataLoading">
+					<span class="spinner-border spinner-border-sm" ng-if="vm.dataLoading" role="status" aria-hidden="true"></span>
+					<span>Entrar</span>
+				</button>
+			</div>
+	   </form>
+	</div>
+ </article>
+
+<style scoped>
+.loginForm {
+	margin: 0 auto;
+	width: 340px;
+	margin-top: 16px!important;
+	justify-content: center;
+	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+article {
+	display: block;
+	/* box-shadow: 0 12px 48px rgba(149,157,165,.3)!important; */
+	border-top: 1px solid #d8dee2;
+	border-radius: 5px;
+	color: #586069 !important;
+	padding: 20px;
+	font-size: 14px;
+	background-color: #fff;
+	border: 1px solid #d8dee2;
+}
+
+article .cabecera {
+	margin-bottom: 16px;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+}
+</style>

@@ -1,0 +1,77 @@
+body {
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #24292e;
+	background-color: #f9f9f9;
+}
+.scroll-bar::-webkit-scrollbar {
+	width: 6px;
+}
+.scroll-bar::-webkit-scrollbar-track {
+	background-color: transparent;
+	border-radius: 10px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+}
+a {
+	cursor: pointer;
+}
+.flash {
+	display: flex;
+	background-color: rgba(255, 255, 255, 0.5);
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.flash > div {
+	margin: auto;
+	font-weight: 600;
+	font-size: 1.1rem;
+	display: flex;
+	flex-direction: column;
+}
+.flash .flash-msg {
+	font-weight: 600;
+	font-size: 1.1rem;
+	margin-top: 10px;
+}
+.flash .flash-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 4rem;
+}
+[ng-cloak], .ng-cloak {  
+   display: none !important;
+}
+md-toast, md-bottom-sheet {
+  position: fixed !important;
+}
+label {
+	margin-bottom: 0!important;
+}
+.md-button.md-fab.md-mini {
+	min-width: 40px!important;
+	max-width: 40px!important;
+}
+md-grid-list md-grid-tile md-grid-tile-footer h3,
+md-grid-list md-grid-tile md-grid-tile-header h3 {
+	font-size: 13px !important;
+}
+md-grid-list md-grid-tile md-grid-tile-footer h3,
+md-grid-list md-grid-tile md-grid-tile-footer h4,
+md-grid-list md-grid-tile md-grid-tile-header h3,
+md-grid-list md-grid-tile md-grid-tile-header h4 {
+	margin: 0 0 0 6px !important;
+}
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
